@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Services
+{% endblock %}
+
+{% block content %}
+<h2>SERVICES</h2>
+<div id="services-container">
+    {% for service in services %}
+        <div class="service">
+            <h3>{% service.name %}</h3>
+            <p>{% service.desc %}</p>
+            <h4>{% service.price %}</h4>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
