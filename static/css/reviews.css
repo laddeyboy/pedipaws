@@ -18,6 +18,10 @@ input[type="radio"] ~ label:hover {
   color: red;
 }
 
+input[type="radio"]:hover ~ label{
+  color: red;
+}
+
 input[type="radio"]:checked ~ label{
   color: gold;
 }
