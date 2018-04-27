@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Reviews
+{% endblock %}
+
+{% block content %}
+<h2>REVIEWS</h2>
+<form id="review-form" action="/review-submit" method="POST">
+    <h4>Add Review</h4>
+    <input type="text" name="title">
+    <div id="stars-container">
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5" class="star"><i class="fas fa-star"></i></label>
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4" class="star"><i class="fas fa-star"></i></label>
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3" class="star"><i class="fas fa-star"></i></label>
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2" class="star"><i class="fas fa-star"></i></label>
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1" class="star"><i class="fas fa-star"></i></label>
+    </div>
+    <textarea name="review"></textarea>
+    <button type="submit">Submit</button>
+</form>
+<div id="reviews-container">
+    {% for review in reviews %}
+        <div class="review">
+            <h3>{% review.title %} - {% review.stars %}</h3>
+            <h4>{% review.date.strftime('%m/%d/%Y') %}</h4>
+            <p>{% review.review %}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
