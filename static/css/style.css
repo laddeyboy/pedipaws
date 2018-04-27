@@ -1,12 +1,20 @@
 h3 {
     color: blue;
 }
+<<<<<<< HEAD
 h4 {
     color: green;
 }
 h2 {
     color: white;
 }
+=======
+
+h2 {
+    color: white;
+}
+
+>>>>>>> master
 h1 {
     color: purple;
 }
