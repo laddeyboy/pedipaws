@@ -14,8 +14,12 @@ import os
 import tornado.ioloop
 import tornado.web
 import tornado.log
+
 import queries
+
 import markdown2
+
+import psycopg2
 
 import boto3
 from jinja2 import Environment, PackageLoader, select_autoescape
@@ -112,7 +116,7 @@ if __name__ == "__main__":
   app.listen(PORT)
   tornado.ioloop.IOLoop.current().start()
   
-  conn = psycopg2.connect("dbname=blog user=postgres")
+conn = psycopg2.connect("dbname=blog user=postgres")
 cur = conn.cursor()
 cur.execute("SELECT * FROM blog;")
 cur.fetchone()
