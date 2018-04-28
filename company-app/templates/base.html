@@ -1,58 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<head>
-    <meta charset="UTF-8"> {% block title %}
-    <title>Pedi Paws</title>{% endblock %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/DC_group_project_1/static/css/base.css">
-    <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
-        crossorigin="anonymous">
-    <script src="/DC_group_project_1/static/js/base.js"></script>
-    {% block head %}{% endblock %}
-</head>
-
-
-<body>
-
-    <div class="wrapper">
-        <nav class="flex-nav">
-            <a href="#" class="toggleNav">☰ Menu</a>
-            <div class="header logo2">Pedi Paws
-                <i class="fas fa-paw"></i>
-            </div>
-            <ul>
-                <li class="logo">
-                    <a href="">Pedi Paws
-                        <i class="fas fa-paw"></i>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="">About</a>
-                </li>
-                <li>
-                    <a href="">Reviews</a>
-                </li>
-                <li>
-                    <a href="">Services</a>
-                </li>
-                <li>
-                    <a href="">Schedule an Appointment</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    {% block content %}{% endblock %}
-    <div>
-        <footer>
-            <!-- Arron has map info -->
-        </footer>
-    </div>
-
-
-</body>
-
+    <head>
+        <meta charset="UTF-8"> 
+        {% block title %}{% endblock %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/static/css/base.css">
+        <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+            crossorigin="anonymous">
+        <script src="/static/js/base.js" type="text/javascript"></script>
+        {% block css %}{% endblock %}
+    </head>
+    
+    <body>
+        <div class="wrapper">
+            <nav class="flex-nav">
+                <a href="#" class="toggleNav">☰ Menu</a>
+                <div class="header logo2">Pedi Paws
+                    <i class="fas fa-paw"></i>
+                </div>
+                <ul>
+                    <li class="logo">
+                        <a href="">Pedi Paws
+                            <i class="fas fa-paw"></i>
+                        </a>
+                    </li>
+    
+                    <li>
+                        <a href="/about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="/reviews.html">Reviews</a>
+                    </li>
+                    <li>
+                        <a href="/services.html">Services</a>
+                    </li>
+                    <li id="schedule-appointment">
+                        <a href="appointment.html">Schedule an Appointment</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div id="content">
+        {% block content %}{% endblock %}
+        </div>
+        <div>
+            <footer>
+                <div id="contact-info">
+                    <h5>Contact Us</h5>
+                    <p>
+                        3302 Canal Street
+                        <br>
+                        Houston TX 77003
+                        <br>
+                        contactus@pedipaws.com
+                        <br>
+                        555.123.4567
+                    </p>
+                    <div id="social-media-container">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div id="map"></div>
+            </footer>
+        </div>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPPEpAUy0g04_4SlnbwVjsChIFUrxofOM&callback=initMap">
+        </script>
+        {% block script %}{% endblock %}
+    </body>
 </html>
