@@ -14,7 +14,11 @@ import os
 import tornado.ioloop
 import tornado.web
 import tornado.log
+
+import psycopg2
 import queries
+import markdown2
+
 import boto3
 from jinja2 import Environment, PackageLoader, select_autoescape
 
@@ -42,7 +46,9 @@ class TemplateHandler(tornado.web.RequestHandler):
   
 class MainHandler(TemplateHandler):
   def get(self):
+
     self.set_header( 'Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+    
     context = {}
     self.render_template("index.html", context)
     
@@ -87,8 +93,8 @@ class FormHandler(TemplateHandler):
 def make_app():
   return tornado.web.Application([
     (r"/", MainHandler),
-    (r"/form", FormHandler),
-    (r"/page2", PageHandler),
+    (r"/about", FormHandler),
+    (r"/", PageHandler),
     (r"/(form-success)", PageHandler),
     (
       r"/static/(.*)",
