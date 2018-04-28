@@ -14,12 +14,8 @@ import os
 import tornado.ioloop
 import tornado.web
 import tornado.log
-
-import psycopg2
 import queries
 import markdown2
-
-import queries
 
 import boto3
 from jinja2 import Environment, PackageLoader, select_autoescape
@@ -54,10 +50,10 @@ class MainHandler(TemplateHandler):
     
 class ServicesHandler(TemplateHandler):
     def get(self): 
-        # ppservices = self.session.query('SELECT * FROM services')
-        # print(ppservices[0])
-        # self.render_template('services.html', {'ppservices': services})
-        self.render_template('services.html', {})
+        ppservices = self.session.query('SELECT * FROM services')
+        for record in ppservices:
+            print(record)
+        self.render_template('services.html', {'ppservices': ppservices})
 
 class AboutHandler(TemplateHandler):
     def get(self, page):
@@ -94,6 +90,8 @@ class AppointmentsHandler(TemplateHandler):
 def make_app():
   return tornado.web.Application([
     (r"/", MainHandler),
+    (r"/form", FormHandler),
+    (r"/page2", PageHandler),
     (r"/services",ServicesHandler),
     (r"/about", AboutHandler),
     (r"/appointments", AppointmentsHandler),
