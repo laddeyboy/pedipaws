@@ -109,6 +109,41 @@ ALTER SEQUENCE public.groomers_id_seq OWNED BY public.groomers.id;
 
 
 --
+-- Name: reviews; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.reviews (
+    id integer NOT NULL,
+    name character varying,
+    stars integer,
+    text character varying
+);
+
+
+ALTER TABLE public.reviews OWNER TO postgres;
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.reviews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.reviews_id_seq OWNER TO postgres;
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.reviews_id_seq OWNED BY public.reviews.id;
+
+
+--
 -- Name: services; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -163,6 +198,13 @@ ALTER TABLE ONLY public.groomers ALTER COLUMN id SET DEFAULT nextval('public.gro
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
+ALTER TABLE ONLY public.reviews ALTER COLUMN id SET DEFAULT nextval('public.reviews_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
 ALTER TABLE ONLY public.services ALTER COLUMN id SET DEFAULT nextval('public.services_id_seq'::regclass);
 
 
@@ -196,6 +238,25 @@ COPY public.groomers (id, groomer, groomer_id) FROM stdin;
 --
 
 SELECT pg_catalog.setval('public.groomers_id_seq', 1, true);
+
+
+--
+-- Data for Name: reviews; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.reviews (id, name, stars, text) FROM stdin;
+1	Katy	4	Service was PURRfect!
+2	Joey	5	My dog looks so suave, I think *I* need a makeover!
+3	Jason	4	Loved it. Will recommend to all my friends!
+4	Kelvin	5	My cat is a jerk, but now he is a good-looking jerk!
+\.
+
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.reviews_id_seq', 4, true);
 
 
 --
@@ -237,6 +298,14 @@ ALTER TABLE ONLY public.appointment
 
 ALTER TABLE ONLY public.groomers
     ADD CONSTRAINT groomers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.reviews
+    ADD CONSTRAINT reviews_pkey PRIMARY KEY (id);
 
 
 --
