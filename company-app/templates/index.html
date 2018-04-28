@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
+{% extends "base.html" %}
+
+{% block head %}
+    
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-
+{% endblock %}
+{% block content %}
 <body>
 
     <div class="slideshow-container">
@@ -39,9 +44,4 @@
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
-
-
-
-</body>
-
-</html>
+{% endblock %} 
