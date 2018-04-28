@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-{% block head %}
+
 
 <head>
     <meta charset="UTF-8"> {% block title %}
@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
         crossorigin="anonymous">
     <script src="/DC_group_project_1/static/js/base.js"></script>
+    {% block head %}{% endblock %}
 </head>
-{% endblock %}
+
 
 <body>
-    {% block navbar %}
+
     <div class="wrapper">
         <nav class="flex-nav">
             <a href="#" class="toggleNav">☰ Menu</a>
@@ -44,13 +45,13 @@
             </ul>
         </nav>
     </div>
-    {% endblock %} {% block content %}{% endblock %} {% block footer %}
+    {% block content %}{% endblock %}
     <div>
         <footer>
             <!-- Arron has map info -->
         </footer>
     </div>
-    {% endblock %}
+
 
 </body>
 
