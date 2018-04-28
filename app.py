@@ -14,11 +14,7 @@ import os
 import tornado.ioloop
 import tornado.web
 import tornado.log
-
-import psycopg2
 import queries
-import markdown2
-
 import boto3
 from jinja2 import Environment, PackageLoader, select_autoescape
 
@@ -46,18 +42,16 @@ class TemplateHandler(tornado.web.RequestHandler):
   
 class MainHandler(TemplateHandler):
   def get(self):
-
     self.set_header( 'Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
-    
     context = {}
     self.render_template("index.html", context)
     
 class ServicesHandler(TemplateHandler):
     def get(self): 
-        # ppservices = self.session.query('SELECT * FROM services')
-        # print(ppservices[0])
-        # self.render_template('services.html', {'ppservices': services})
-        self.render_template('services.html', {})
+        ppservices = self.session.query('SELECT * FROM services')
+        for record in ppservices:
+            print(record)
+        self.render_template('services.html', {'ppservices': ppservices})
 
 class PageHandler(TemplateHandler):
     def get(self, page):
@@ -89,9 +83,9 @@ class FormHandler(TemplateHandler):
 def make_app():
   return tornado.web.Application([
     (r"/", MainHandler),
+    (r"/form", FormHandler),
+    (r"/page2", PageHandler),
     (r"/services",ServicesHandler),
-    (r"/about", FormHandler),
-    (r"/", PageHandler),
     (r"/(form-success)", PageHandler),
     (
       r"/static/(.*)",
