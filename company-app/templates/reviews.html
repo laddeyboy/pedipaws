@@ -4,6 +4,11 @@
     Reviews
 {% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="static/css/reviews.css">
+    <script src="static/js/reviews.js" type="text/javascript"></script>
+{% endblock %}
+
 {% block content %}
 <h2>REVIEWS</h2>
 <form id="review-form" action="/review-submit" method="POST">
