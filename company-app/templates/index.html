@@ -1,12 +1,11 @@
-{% extends "base.html" %} {% block head %}
+{% extends "base.html" %} 
 
-
-<head>
+{% block css %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/DC_group_project_1/static/css/index.css">
-</head>
-{% endblock %} {% block content %}
+{% endblock %} 
 
+{% block content %}
 <body>
 
     <div class="slideshow-container">
@@ -40,4 +39,4 @@
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
-    {% endblock %}
+{% endblock %}
