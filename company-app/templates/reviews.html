@@ -32,9 +32,9 @@
 <div id="reviews-container">
     {% for review in reviews %}
         <div class="review">
-            <h3>{% review.title %} - {% review.stars %}</h3>
-            <h4>{% review.date.strftime('%m/%d/%Y') %}</h4>
-            <p>{% review.review %}</p>
+            <h3>{{ review.title %} - {% review.stars }}</h3>
+            <h4>{{ review.date.strftime('%m/%d/%Y') }}</h4>
+            <p>{{ review.review }}</p>
         </div>
     {% endfor %}
 </div>
