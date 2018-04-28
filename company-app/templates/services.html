@@ -4,11 +4,12 @@
 {% endblock %} {% block content %}
 <h2>SERVICES</h2>
 <div id="services-container">
-    {% for service in services %}
+    {% for service in ppservices %}
     <div class="service">
-        <h3>{% service.name %}</h3>
-        <p>{% service.desc %}</p>
-        <h4>{% service.price %}</h4>
+        <h3>{{ service.service }}</h3>
+        <p>{{ service.description }}</p>
+        <h4>{{ service.price }}</h4>
+        <h4>{{ service.groomer }}</h4>
     </div>
     {% endfor %}
 </div>
