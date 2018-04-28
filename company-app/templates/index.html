@@ -1,19 +1,42 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 
-{% block head %}
-    
-{% endblock %}
+{% block css %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/DC_group_project_1/static/css/index.css">
+{% endblock %} 
 
 {% block content %}
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit dictum diam vitae maximus. Suspendisse sodales lacus mauris, eget ultrices nulla faucibus eget. Cras malesuada semper rhoncus. Duis pulvinar luctus varius. Aenean elementum feugiat erat, sed accumsan dui blandit ac. Pellentesque at fringilla ligula. Integer risus est, rutrum sit amet porta nec, finibus ut nisl. Vestibulum eu ante consequat, laoreet lacus non, bibendum est. Integer sit amet egestas odio. Fusce arcu orci, aliquam ut enim nec, aliquam accumsan sapien. Phasellus vitae velit eget quam pretium accumsan finibus a massa. Pellentesque quis lacus ac quam porta dapibus non et eros. Integer ac ullamcorper leo. Mauris ut interdum est.
+<body>
 
-Vestibulum ultricies odio vitae elit consequat malesuada. In consequat commodo diam, auctor tincidunt diam sodales vel. Fusce id lorem ligula. Vivamus tellus felis, tincidunt vel justo eu, mollis condimentum enim. In non ipsum tincidunt, pharetra massa eu, faucibus nisi. Donec vel arcu orci. Nam ut tellus ac enim laoreet pulvinar. Quisque et felis eget ipsum fringilla laoreet id vitae nunc. Nam dignissim, quam in convallis maximus, urna elit ultricies erat, non iaculis massa erat quis nisi. Nulla facilisi. Nullam sed facilisis ante. Nunc at eros sit amet nisi elementum consequat a a quam.
+    <div class="slideshow-container">
 
-Morbi rhoncus turpis lectus, id auctor nibh porttitor at. Donec pretium quam ut ligula iaculis, sit amet ornare augue congue. Vestibulum quis diam at lorem venenatis dignissim. Nullam sodales vehicula lectus et malesuada. Aenean et condimentum est. Integer sit amet velit mollis, egestas elit eu, viverra felis. Ut consectetur hendrerit iaculis. Nullam consequat tincidunt tortor, eget eleifend dolor pharetra quis. Duis mauris nulla, dapibus vel dolor nec, accumsan auctor ligula. Curabitur enim lectus, ullamcorper a molestie in, faucibus eu libero. Sed feugiat ligula ac nunc convallis, non accumsan erat rhoncus. Aliquam eu magna ex. Nunc ac lacus auctor ante aliquam porttitor sed sed lectus. Pellentesque tincidunt massa at risus bibendum, eget euismod justo blandit. Mauris malesuada porttitor metus nec eleifend.
+        <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img src="/DC_group_project_1/static/img/slide2.jpeg" style="width:100%">
 
-Curabitur ut neque sit amet risus volutpat porttitor. Maecenas maximus neque turpis, sed porttitor lectus euismod id. Donec in rhoncus leo. Maecenas consequat tellus ut est pellentesque faucibus. In tincidunt, arcu quis lobortis ultricies, mi dolor feugiat nisi, in scelerisque lorem turpis vitae magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent facilisis nisl in convallis mollis. Donec vel lorem dapibus, rutrum est non, placerat ex. Nullam vehicula metus turpis, ac venenatis velit varius eget. Donec non lectus eget enim viverra posuere. Nam consequat, felis quis laoreet commodo, quam urna placerat neque, in blandit dui lectus vel dolor.
+        </div>
 
-Suspendisse potenti. In aliquam pulvinar odio vel congue. Aliquam sodales vitae sem volutpat pretium. Aenean in tristique dolor. In non erat vel augue rhoncus pellentesque vitae in magna. In cursus et mi eget volutpat. Integer feugiat ultrices bibendum. Cras rhoncus venenatis est, a rutrum sapien posuere et. Sed tempor nisl id felis pellentesque, sagittis interdum urna suscipit.
-</p>
-{% endblock %} 
+        <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img src="/DC_group_project_1/static/img/slide3.jpeg" style="width:100%">
+
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img src="/DC_group_project_1/static/img/slide9.jpg" style="width:100%">
+
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    </div>
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+{% endblock %}
