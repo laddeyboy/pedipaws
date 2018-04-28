@@ -94,8 +94,6 @@ class AppointmentsHandler(TemplateHandler):
 def make_app():
   return tornado.web.Application([
     (r"/", MainHandler),
-    (r"/form", FormHandler),
-    (r"/page2", PageHandler),
     (r"/services",ServicesHandler),
     (r"/about", AboutHandler),
     (r"/appointments", AppointmentsHandler),
