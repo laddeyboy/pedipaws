@@ -54,19 +54,15 @@ class MainHandler(TemplateHandler):
     
 class ServicesHandler(TemplateHandler):
     def get(self): 
-        ppservices = self.session.query('SELECT * FROM services')
-        self.render_template('services.html'), {'ppservices': services})
+        # ppservices = self.session.query('SELECT * FROM services')
+        # print(ppservices[0])
+        # self.render_template('services.html', {'ppservices': services})
+        self.render_template('services.html', {})
 
 class PageHandler(TemplateHandler):
     def get(self, page):
         context = {}
-        if page == 'form-success':
-        context['message'] = "YAY 2!"
-      
-        page = page + '.html'
-        self.set_header(
-        'Cache-Control',
-        'no-store, no-cache, must-revalidate, max-age=0')
+        self.set_header('Cache-Control','no-store, no-cache, must-revalidate, max-age=0')
         self.render_template(page, context)
 
 class FormHandler(TemplateHandler):
@@ -93,6 +89,7 @@ class FormHandler(TemplateHandler):
 def make_app():
   return tornado.web.Application([
     (r"/", MainHandler),
+    (r"/services",ServicesHandler),
     (r"/about", FormHandler),
     (r"/", PageHandler),
     (r"/(form-success)", PageHandler),
