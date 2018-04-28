@@ -19,6 +19,8 @@ import psycopg2
 import queries
 import markdown2
 
+import queries
+
 import boto3
 from jinja2 import Environment, PackageLoader, select_autoescape
 
@@ -46,9 +48,7 @@ class TemplateHandler(tornado.web.RequestHandler):
   
 class MainHandler(TemplateHandler):
   def get(self):
-
     self.set_header( 'Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
-    
     context = {}
     self.render_template("index.html", context)
     
@@ -59,40 +59,46 @@ class ServicesHandler(TemplateHandler):
         # self.render_template('services.html', {'ppservices': services})
         self.render_template('services.html', {})
 
-class PageHandler(TemplateHandler):
+class AboutHandler(TemplateHandler):
     def get(self, page):
         context = {}
         self.set_header('Cache-Control','no-store, no-cache, must-revalidate, max-age=0')
-        self.render_template(page, context)
+        self.render_template('about.html', {})
 
-class FormHandler(TemplateHandler):
-  def get(self):
-    self.set_header(
-      'Cache-Control',
-      'no-store, no-cache, must-revalidate, max-age=0')
-    self.render_template("form.html", {})
+class ReviewsHandler(TemplateHandler):
+  def get(self, page):
+    context = {}
+    self.set_header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+    self.render_template("reviews.html", {})
     
-  def post(self):
-    email = self.get_body_argument('email', None)
-    comments = self.get_body_argument('comments', None)
-    error = ''
-    if email:
-      print('EMAIL:', email)
-      send_email(email, comments)
-      self.redirect('/form-success')
+class AppointmentsHandler(TemplateHandler):
+  def get(self, page):
+    context = {}
+    self.set_header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+    self.render_template("appointments.html", {})
+    
+  # def post(self):
+  #   email = self.get_body_argument('email', None)
+  #   comments = self.get_body_argument('comments', None)
+  #   error = ''
+  #   if email:
+  #     print('EMAIL:', email)
+  #     send_email(email, comments)
+  #     self.redirect('/form-success')
 
-    self.set_header(
-      'Cache-Control',
-      'no-store, no-cache, must-revalidate, max-age=0')
-    self.render_template("form.html", {'error': error})
+    # self.set_header(
+    #   'Cache-Control',
+    #   'no-store, no-cache, must-revalidate, max-age=0')
+    # self.render_template("form.html", {'error': error})
     
 def make_app():
   return tornado.web.Application([
     (r"/", MainHandler),
     (r"/services",ServicesHandler),
-    (r"/about", FormHandler),
-    (r"/", PageHandler),
-    (r"/(form-success)", PageHandler),
+    (r"/about", AboutHandler),
+    (r"/appointments", AppointmentsHandler),
+    (r"/reviews", ReviewsHandler),
+    
     (
       r"/static/(.*)",
       tornado.web.StaticFileHandler,
@@ -107,3 +113,10 @@ if __name__ == "__main__":
   PORT = int(os.environ.get('PORT', '8888'))
   app.listen(PORT)
   tornado.ioloop.IOLoop.current().start()
+  
+  conn = psycopg2.connect("dbname=blog user=postgres")
+cur = conn.cursor()
+cur.execute("SELECT * FROM blog;")
+cur.fetchone()
+cur.close()
+conn.close()
