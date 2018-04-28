@@ -15,15 +15,21 @@ import tornado.ioloop
 import tornado.web
 import tornado.log
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1b26046848c0c23bcb460340a0879b99e259f0d1
 
 import psycopg2
 import queries
 import markdown2
 
+<<<<<<< HEAD
 import os
 =======
 import queries
 >>>>>>> master
+=======
+>>>>>>> 1b26046848c0c23bcb460340a0879b99e259f0d1
 import boto3
 from jinja2 import Environment, PackageLoader, select_autoescape
 
@@ -52,6 +58,7 @@ class TemplateHandler(tornado.web.RequestHandler):
 class MainHandler(TemplateHandler):
   def get(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
     self.set_header(
       'Cache-Control',
       'no-store, no-cache, must-revalidate, max-age=0')
@@ -59,6 +66,11 @@ class MainHandler(TemplateHandler):
 =======
     self.set_header( 'Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
 >>>>>>> master
+=======
+
+    self.set_header( 'Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+    
+>>>>>>> 1b26046848c0c23bcb460340a0879b99e259f0d1
     context = {}
     self.render_template("index.html", context)
     
