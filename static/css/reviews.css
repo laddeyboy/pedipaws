@@ -1,0 +1,27 @@
+input[type="radio"] {
+  display: none;
+}
+
+.star {
+  float: right;
+}
+
+input[type="radio"] ~ label {
+  color: lightgrey;
+}
+
+input[type="radio"] ~ label {
+  display: inline-block;
+}
+
+input[type="radio"] ~ label:hover {
+  color: red;
+}
+
+input[type="radio"]:hover ~ label{
+  color: red;
+}
+
+input[type="radio"]:checked ~ label{
+  color: gold;
+}
