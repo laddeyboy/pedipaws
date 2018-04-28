@@ -16,7 +16,7 @@ from jinja2 import \
   Environment, PackageLoader, select_autoescape
 
 ENV = Environment(
-  loader=PackageLoader('myapp', 'templates'),
+  loader=PackageLoader('company-app', 'templates'),
   autoescape=select_autoescape(['html', 'xml'])
 )
 
@@ -30,10 +30,6 @@ class MainHandler(TemplateHandler):
     self.set_header(
       'Cache-Control',
       'no-store, no-cache, must-revalidate, max-age=0')
-    # name = self.get_query_argument('name', 'Guest')
-    # amount = self.get_query_argument('amount', '0')
-    # amount = float(amount)
-    # amount = amount * 1.15
     
     context = {
     }
@@ -50,23 +46,7 @@ class PageHandler(TemplateHandler):
       'Cache-Control',
       'no-store, no-cache, must-revalidate, max-age=0')
     self.render_template(page, context)
-    
-def send_email (email, comments):
-  response = client.send_email(
-    Destination={
-      'ToAddresses': ['test@test.com'],
-    },
-    Message={
-      'Body': {
-        'Text': {
-          'Charset': 'UTF-8',
-          'Data': '{} wants to talk to you\n\n{}'.format(email, comments),
-        },
-      },
-      'Subject': {'Charset': 'UTF-8', 'Data': 'Test email'},
-    },
-    Source ='mailer@jaredstevens.net',
-  )
+
 class FormHandler(TemplateHandler):
   def get(self):
     self.set_header(
@@ -82,10 +62,7 @@ class FormHandler(TemplateHandler):
       print('EMAIL:', email)
       send_email(email, comments)
       self.redirect('/form-success')
-      
-    # else:
-    #   error = 'GIVE ME YOUR EMAIL!'
-      
+
     self.set_header(
       'Cache-Control',
       'no-store, no-cache, must-revalidate, max-age=0')
