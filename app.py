@@ -2,6 +2,10 @@ import tornado.ioloop
 import tornado.web
 import tornado.log
 
+import psycopg2
+import queries
+import markdown2
+
 import os
 import boto3
 
@@ -31,8 +35,7 @@ class MainHandler(TemplateHandler):
       'Cache-Control',
       'no-store, no-cache, must-revalidate, max-age=0')
     
-    context = {
-    }
+    context = {}
     self.render_template("index.html", context)
 
 class PageHandler(TemplateHandler):
@@ -71,8 +74,8 @@ class FormHandler(TemplateHandler):
 def make_app():
   return tornado.web.Application([
     (r"/", MainHandler),
-    (r"/form", FormHandler),
-    (r"/page2", PageHandler),
+    (r"/about", FormHandler),
+    (r"/", PageHandler),
     (r"/(form-success)", PageHandler),
     (
       r"/static/(.*)",
