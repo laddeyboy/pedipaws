@@ -55,13 +55,13 @@ class MainHandler(TemplateHandler):
 class ServicesHandler(TemplateHandler):
     def get(self): 
         ppservices = self.session.query('SELECT * FROM services')
-        self.render_template('services.html'), {'ppservices': services})
+        self.render_template('services.html', {'ppservices': services})
 
 class PageHandler(TemplateHandler):
     def get(self, page):
         context = {}
         if page == 'form-success':
-        context['message'] = "YAY 2!"
+          context['message'] = "YAY 2!"
       
         page = page + '.html'
         self.set_header(
