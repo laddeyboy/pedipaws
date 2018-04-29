@@ -119,7 +119,7 @@ if __name__ == "__main__":
     tornado.log.enable_pretty_logging()
 
     app = make_app()
-    PORT = int(os.environ.get('PORT', '8080'))
+    PORT = int(os.environ.get('PORT', '8000'))
     app.listen(PORT)
     tornado.ioloop.IOLoop.current().start()
 

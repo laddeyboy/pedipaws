@@ -1,9 +1,12 @@
 [[source]]
+
 name = "pypi"
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 
+
 [packages]
+
 tornado = "*"
 "jinja2" = "*"
 queries = "*"
@@ -11,7 +14,10 @@ queries = "*"
 "psycopg2" = "*"
 "boto3" = "*"
 
+
 [requires]
+
 python_version = "3.5"
+
 
 [dev-packages]
