@@ -22,6 +22,7 @@ import markdown2
 import psycopg2
 
 import boto3
+
 from jinja2 import Environment, PackageLoader, select_autoescape
 
 client = boto3.client(
