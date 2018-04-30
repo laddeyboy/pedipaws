@@ -71,11 +71,11 @@ class AboutHandler(TemplateHandler):
 
 
 class ReviewsHandler(TemplateHandler):
-    def get(self, page):
+    def get(self):
         context = {}
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
-        self.render_template("reviews.html", {})
+        self.render_template('reviews.html', {})
 
 
 class AppointmentsHandler(TemplateHandler):
