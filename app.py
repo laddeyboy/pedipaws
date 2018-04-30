@@ -58,8 +58,8 @@ class MainHandler(TemplateHandler):
 class ServicesHandler(TemplateHandler):
     def get(self):
         ppservices = self.session.query('SELECT * FROM services')
-        for record in ppservices:
-            print(record)
+        # for service in ppservices:
+        #     print(service)
         self.render_template('services.html', {'ppservices': ppservices})
 
 

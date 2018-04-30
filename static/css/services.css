@@ -1,3 +1,19 @@
-#services-container {
+body{
+    border: 2px solid red;
+}
+
+.services-container {
     display: flex;
+    width: 500px;
+    height: 1000px;
+    flex-wrap: wrap;
+}
+
+.service-tile {
+    display: flex;
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: #7d68d9;
+    height: 200px;
+    width: 200px;
 }
