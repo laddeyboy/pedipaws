@@ -11,10 +11,11 @@
 <div class="services-container">
     {% for service in ppservices %}
     <div class="service-tile">
-        <h3>{{ service.service }}</h3>
-        <p>{{ service.description }}</p>
-        <h4>{{ service.price }}</h4>
-        <h4>{{ service.groomer }}</h4>
+        <div id="service-heading"><h3>{{ service.service }}</h3></div>
+        <div id="service-content"><p>{{ service.description }}</p></div>
+        <div id="service-duration"><h4>{{service.duration}} mins</h4></div>
+        <div id="service-price"><h4>${{ service.price }}.00</h4></div>
+        <!--<div id="service-groomer"><h4>{{ service.groomer }}</h4></div>-->
     </div>
     {% endfor %}
 </div>
