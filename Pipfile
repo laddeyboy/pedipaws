@@ -10,6 +10,9 @@ verify_ssl = true
 tornado = "*"
 "jinja2" = "*"
 queries = "*"
+"markdown2" = "*"
+"psycopg2" = "*"
+"boto3" = "*"
 
 
 [requires]
@@ -18,4 +21,3 @@ python_version = "3.5"
 
 
 [dev-packages]
-
