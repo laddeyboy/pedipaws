@@ -1,6 +1,12 @@
-#image-caption {
+#image-caption1, #image-caption2 {
     padding: 0;
     display: inline;
+}
+#image-caption1 {
+    margin-left: 200px;
+}
+#image-caption2 {
+    margin-right: 200px;
 }
 .images {
     justify-content: space-around;
