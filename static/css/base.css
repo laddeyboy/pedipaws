@@ -33,7 +33,7 @@ a {
   text-align: center;
 }
 #schedule-appointment {
-  border: 1px solid red;
+  background-color: #F18B86;
   border-radius: 5px;
   margin-right: 50px;
   padding: 10px;
@@ -47,7 +47,10 @@ footer {
   display: flex;
   width: 100%;
   height: 400px;
-  background-color: #a9a789;
+  background-color: #6A8D73;
+  color: white;
+  font-weight: 200;
+  letter-spacing: .05em;
 }
 
 #contact-info,
@@ -84,7 +87,7 @@ footer {
 .header {
   display: none;
   text-align: center;
-  background-color: #7d68d9;
+  background-color: #6A8D73;
   padding: 10px;
 }
 
@@ -94,13 +97,12 @@ footer {
 
 .toggleNav {
   display: none;
-  background-color: #7d68d9;
+  background-color: #6A8D73;
   font-size: 200%;
 }
 
 .flex-nav ul {
-  border: 1px solid black;
-  background-color: #7d68d9;
+  background-color: #6A8D73;
   list-style: none;
   position: fixed;
   z-index: 1;
