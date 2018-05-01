@@ -31,6 +31,7 @@ form {
 
 #name::placeholder, #review::placeholder {
   color: lightgrey;
+  font-weight: 300;
 }
 
 #button-div {
