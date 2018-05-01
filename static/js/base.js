@@ -5,13 +5,13 @@ $(function() {
 });
 
 function initMap() {
-  var uluru = { lat: -25.363, lng: 131.044 };
+  var store = { lat: 29.753, lng: -95.339 };
   var map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: uluru
+    zoom: 13,
+    center: store
   });
   var marker = new google.maps.Marker({
-    position: uluru,
+    position: store,
     map: map
   });
 }
