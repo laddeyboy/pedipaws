@@ -1,6 +1,12 @@
-#image-caption {
+#image-caption1, #image-caption2 {
     padding: 0;
     display: inline;
+}
+#image-caption1 {
+    margin-left: 200px;
+}
+#image-caption2 {
+    margin-right: 200px;
 }
 .images {
     justify-content: space-around;
@@ -10,18 +16,32 @@
 .caption {
     justify-content: space-around;
     display: flex;
-        align-items: center;
+    align-items: center;
+}
+.paragraphs {
+    padding: 0 100px 0 100px;
 }
 img {
     border-radius: 25px;
     margin-bottom: 0px;
 }
+h2 {
+    text-align: center;
+}
+
+#img1 {
+    margin-left: 200px;
+}
+#img2 {
+    margin-right: 200px;
+}
+
 #charity {
     text-decoration: none;
     color: #7D68D9;
-  font-weight: normal;
-  letter-spacing: 0;
-  display: inline;
-  text-align: left;
-  transition: none;
+    font-weight: normal;
+    letter-spacing: 0;
+    display: inline;
+    text-align: left;
+    transition: none;
 }
