@@ -64,7 +64,7 @@ class ServicesHandler(TemplateHandler):
 
 
 class AboutHandler(TemplateHandler):
-    def get(self, page):
+    def get(self):
         context = {}
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
@@ -72,11 +72,28 @@ class AboutHandler(TemplateHandler):
 
 
 class ReviewsHandler(TemplateHandler):
+    def post(self):
+        name = self.get_body_argument('name')
+        stars = self.get_body_argument('rating')
+        text = self.get_body_argument('review')
+        self.session.query('''
+        INSERT INTO reviews VALUES(
+        DEFAULT,
+        %(name)s,
+        %(stars)s,
+        %(text)s)
+        ''', {'name': name, 'stars': stars, 'text': text})
+        self.redirect('/reviews')
+    
     def get(self):
-        context = {}
+        reviews = self.session.query('''
+        SELECT *
+        FROM reviews
+        ORDER BY id DESC
+        ''')
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
-        self.render_template('reviews.html', {})
+        self.render_template('reviews.html', {'reviews': reviews})
 
 
 class AppointmentsHandler(TemplateHandler):
@@ -124,9 +141,9 @@ if __name__ == "__main__":
     app.listen(PORT)
     tornado.ioloop.IOLoop.current().start()
 
-conn = psycopg2.connect("dbname=blog user=postgres")
-cur = conn.cursor()
-cur.execute("SELECT * FROM blog;")
-cur.fetchone()
-cur.close()
-conn.close()
+# conn = psycopg2.connect("dbname=blog user=postgres")
+# cur = conn.cursor()
+# cur.execute("SELECT * FROM blog;")
+# cur.fetchone()
+# cur.close()
+# conn.close()
