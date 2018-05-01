@@ -29,6 +29,10 @@ form {
   box-shadow: -5px 5px 5px #efe4da;
 }
 
+#name::placeholder, #review::placeholder {
+  color: lightgrey;
+}
+
 #button-div {
   position: relative;
   font-size: 20px;
