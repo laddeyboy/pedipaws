@@ -2,3 +2,4 @@
 Pipfile
 Pipfile.lock
 app.py
+*.pyc

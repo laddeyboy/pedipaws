@@ -1,3 +1,34 @@
-#services-container {
+
+.services-container {
     display: flex;
+    flex-direction: row;
+    /*width: 500px;*/
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.service-tile {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: #7d68d9;
+    width: 275px;
+    margin: 10px;
+    text-align: center;
+    flex: 0 1 auto;
+    justify-content: center;
+    box-shadow: inset -5px -5px 5px 0px #EDF7EE, 
+                inset 5px 5px 5px 0px #BCB3AB;
+}
+
+.service-tile:hover {
+    transform: scale(1.25);
+}
+
+#service-content {
+    padding-left: 10px;
+    padding-right: 10px;
+    flex-grow: 2;
+    
 }
