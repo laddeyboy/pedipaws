@@ -91,10 +91,13 @@ class ReviewsHandler(TemplateHandler):
         FROM reviews
         ORDER BY id DESC
         ''')
+        graphic_reviews = []
+        for review in reviews:
+            review['stars'] *= "\u2605"
+            graphic_reviews.append(review)
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
-        self.render_template('reviews.html', {'reviews': reviews})
-
+        self.render_template('reviews.html', {'reviews': graphic_reviews})
 
 class AppointmentsHandler(TemplateHandler):
     def get(self, page):

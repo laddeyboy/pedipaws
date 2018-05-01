@@ -2,11 +2,6 @@
 /*  border: 1px solid red;*/
 /*}*/
 
-html,
-body {
-  height: 100%;
-}
-
 html {
   padding: 0;
   background-color: #efe3da;
@@ -45,7 +40,7 @@ a {
 }
 
 #content {
-  padding: 90px 1em 0 1em;
+  padding: 90px 5em 0 5em;
 }
 
 footer {
