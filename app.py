@@ -82,9 +82,13 @@ class ReviewsHandler(TemplateHandler):
         %(name)s,
         %(stars)s,
         %(text)s)
-        ''', {'name': name, 'stars': stars, 'text': text})
+        ''', {
+            'name': name,
+            'stars': stars,
+            'text': text
+        })
         self.redirect('/reviews')
-    
+
     def get(self):
         reviews = self.session.query('''
         SELECT *
@@ -98,6 +102,7 @@ class ReviewsHandler(TemplateHandler):
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
         self.render_template('reviews.html', {'reviews': graphic_reviews})
+
 
 class AppointmentsHandler(TemplateHandler):
     def get(self):
