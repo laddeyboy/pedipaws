@@ -109,7 +109,7 @@ class AppointmentsHandler(TemplateHandler):
         context = {}
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
-        self.render_template("appointments.html", {})
+        self.render_template("appointment.html", {})
 
     # def post(self):
     #   email = self.get_body_argument('email', None)
@@ -132,7 +132,7 @@ def make_app():
             (r"/", MainHandler),
             (r"/services", ServicesHandler),
             (r"/about", AboutHandler),
-            (r"/appointments", AppointmentsHandler),
+            (r"/appointment", AppointmentsHandler),
             (r"/reviews", ReviewsHandler),
             (r"/static/(.*)", tornado.web.StaticFileHandler, {
                 'path': 'static'
