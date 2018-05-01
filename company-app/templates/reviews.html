@@ -1,42 +1,58 @@
-{% extends "base.html" %} {% block title %} Reviews {% endblock %} {% block css %}
-<link rel="stylesheet" type="text/css" href="static/css/reviews.css"> {% endblock %} {% block content %}
-<h2>REVIEWS</h2>
-<form id="review-form" action="/review-submit" method="POST">
-    <h4>Add Review</h4>
-    <input type="text" name="title">
-    <div id="stars-container">
-        <input type="radio" id="star5" name="rating" value="5">
-        <label for="star5" class="star">
-            <i class="fas fa-star"></i>
-        </label>
-        <input type="radio" id="star4" name="rating" value="4">
-        <label for="star4" class="star">
-            <i class="fas fa-star"></i>
-        </label>
-        <input type="radio" id="star3" name="rating" value="3">
-        <label for="star3" class="star">
-            <i class="fas fa-star"></i>
-        </label>
-        <input type="radio" id="star2" name="rating" value="2">
-        <label for="star2" class="star">
-            <i class="fas fa-star"></i>
-        </label>
-        <input type="radio" id="star1" name="rating" value="1">
-        <label for="star1" class="star">
-            <i class="fas fa-star"></i>
-        </label>
+{% extends "base.html" %} 
+
+{% block title %} 
+    Reviews 
+{% endblock %} 
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="static/css/reviews.css"> 
+{% endblock %} 
+
+{% block content %}
+    <h2>REVIEWS</h2>
+    <form id="review-form" action="/reviews" method="POST">
+        <label class="form-label">NAME</label>
+        <input id="name" type="text" name="name" placeholder="Jane Doe" required>
+        <label class="form-label">RATING</label>
+        <div id="stars-container">
+            <input type="radio" id="star5" name="rating" value="5" required>
+            <label for="star5" class="star">
+                <i class="fas fa-star"></i>
+            </label>
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4" class="star">
+                <i class="fas fa-star"></i>
+            </label>
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3" class="star">
+                <i class="fas fa-star"></i>
+            </label>
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2" class="star">
+                <i class="fas fa-star"></i>
+            </label>
+            <input type="radio" id="star1" name="rating" value="1">
+            <label for="star1" class="star">
+                <i class="fas fa-star"></i>
+            </label>
+        </div>
+        <label class="form-label">REVIEW</label>
+        <textarea id="review" name="review" placeholder="Loved it!" required></textarea>
+        <div id="button-div">
+            <button id="form-submit-button" type="submit">Submit</button>
+        </div>
+    </form>
+    <hr>
+    <div id="reviews-container">
+        {% for review in reviews %}
+        <div class="review">
+            <h3>{{ review.name }} - <span class="star-graphic">{{ review.stars }}</span></h3>
+            <p>{{ review.text }}</p>
+        </div>
+        {% endfor %}
     </div>
-    <textarea name="review"></textarea>
-    <button type="submit">Submit</button>
-</form>
-<div id="reviews-container">
-    {% for review in reviews %}
-    <div class="review">
-        <h3>{{ review.title }} - {{ review.stars }}</h3>
-        <h4>{{ review.date.strftime('%m/%d/%Y') }}</h4>
-        <p>{{ review.review }}</p>
-    </div>
-    {% endfor %}
-</div>
-{% endblock %} {% block script %}
-<script src="static/js/reviews.js" type="text/javascript"></script>{% endblock %}
+{% endblock %}
+
+{% block script %}
+    <script src="static/js/reviews.js" type="text/javascript"></script>
+{% endblock %}

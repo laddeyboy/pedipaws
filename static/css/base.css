@@ -1,7 +1,6 @@
-html,
-body {
-  height: 100%;
-}
+/** {*/
+/*  border: 1px solid red;*/
+/*}*/
 
 html {
   padding: 0;
@@ -10,9 +9,13 @@ html {
 
 body {
   background-color: #fcf0e5;
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   max-width: 960px;
   margin: auto;
+}
+
+h1, h2 {
+  font-family: "Montserrat", sans-serif;
 }
 
 a {
@@ -37,7 +40,7 @@ a {
 }
 
 #content {
-  padding: 90px 1em 0 1em;
+  padding: 90px 5em 0 5em;
 }
 
 footer {
@@ -54,6 +57,10 @@ footer {
 
 #contact-info {
   width: 40%;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #contact-info p {
@@ -62,10 +69,11 @@ footer {
 
 #contact-info h5 {
   margin: 0;
+  font-size: 20px;
 }
 
 #social-media-container {
-  font-size: 2em;
+  font-size: 1.75em;
   letter-spacing: 0.25em;
 }
 

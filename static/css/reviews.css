@@ -1,9 +1,71 @@
+h2 {
+  text-align: center;
+}
+
+form {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#name {
+  font-size: 20px;
+  height: 1.25em;
+  width: 50%;
+  border: none;
+  background-color: white;
+  box-shadow: -5px 5px 5px #efe4da;
+}
+
+#stars-container {
+  left: 0;
+  width: 113px;
+}
+
+#review {
+  font-size: 20px;
+  height: 4em;
+  border: none;
+  box-shadow: -5px 5px 5px #efe4da;
+}
+
+#name::placeholder, #review::placeholder {
+  color: lightgrey;
+  font-weight: 300;
+}
+
+#button-div {
+  position: relative;
+  font-size: 20px;
+  height: 2em;
+  margin-bottom: 1em;
+}
+
+#form-submit-button {
+  width: 5em;
+  height: 2em;
+  font-size: 20px;
+  margin-top: .5em;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  border: none;
+  box-shadow: -5px 5px 5px #efe4da;
+}
+
 input[type="radio"] {
   display: none;
 }
 
+.form-label {
+  font-size: .8em;
+  letter-spacing: .1em;
+  margin-top: .5em;
+}
+
 .star {
   float: right;
+  filter: drop-shadow(-2px 2px 3px #efe4da);
 }
 
 input[type="radio"] ~ label {
@@ -18,10 +80,22 @@ input[type="radio"] ~ label:hover {
   color: red;
 }
 
-input[type="radio"]:hover ~ label{
+input[type="radio"]:checked ~ label{
+  color: gold;
+}
+
+input[type="radio"]:hover ~ label,
+input[type="radio"]:checked:hover ~label {
   color: red;
 }
 
-input[type="radio"]:checked ~ label{
-  color: gold;
+.review {
+  background-color: white;
+  margin: 1em auto;
+  padding: .5em 2em;
+  box-shadow: -5px 5px 5px #efe4da;
+}
+
+.star-graphic {
+  font-size: .8em;
 }
