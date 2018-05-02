@@ -13,8 +13,10 @@
     <div class="service-tile">
         <div id="service-heading"><h3>{{ service.service }}</h3></div>
         <div id="service-content"><p>{{ service.description }}</p></div>
-        <div id="service-duration"><h4>{{service.duration}} mins</h4></div>
+        <div class="column"><div id="service-duration"><h4>{{service.duration}} mins</h4></div>
         <div id="service-price"><h4>${{ service.price }}.00</h4></div>
+        <img src="{{ service.svc_type_img }}" width="100" height="100"></div>
+        <div><a href="/appointment"><button>Schedule {{ service.service }}</button></a></div>
         <!--<div id="service-groomer"><h4>{{ service.groomer }}</h4></div>-->
     </div>
     {% endfor %}
