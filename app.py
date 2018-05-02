@@ -159,7 +159,7 @@ def make_app():
             (r"/", MainHandler),
             (r"/services", ServicesHandler),
             (r"/about", AboutHandler),
-            (r"/appointments", AppointmentsHandler),
+            (r"/appointment", AppointmentsHandler),
             (r"/reviews(.*)", ReviewsHandler),
             (r"/static/(.*)", tornado.web.StaticFileHandler, {
                 'path': 'static'

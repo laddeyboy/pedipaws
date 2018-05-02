@@ -1,7 +1,5 @@
-{% extends "base.html" %} {% block title %} Schedule an Appointment {% endblock %} {% block head %}
-<link rel="stylesheet" type="text/css" href="static/css/appointments.css">
-<script src="static/js/appointments.js" type="text/javascript"></script>
-{% endblock %} {% block content %}
+{% extends "base.html" %} {% block title %} Schedule an Appointment {% endblock %} {% block css %}
+<link rel="stylesheet" type="text/css" href="static/css/appointments.css"> {% endblock %} {% block content %}
 <form id="appointment-form" action="" method="POST">
     First Name:
     <br>
@@ -68,3 +66,6 @@
     <textarea>Special Comments?</textarea>
 
 </form>
+{% endblock %} {% block script %}
+<script src="static/js/appointments.js" type="text/javascript"></script>
+{% endblock %}
