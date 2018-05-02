@@ -51,8 +51,8 @@
         </div>
         {% endfor %}
         <div id="page-buttons-container">
-            <i class="fas fa-angle-left"></i>
-            <i class="fas fa-angle-right"></i>
+            <a href="/reviews?page={{ lastpage }}"><i class="fas fa-angle-left"></i></a>
+            <a href="/reviews?page={{ nextpage }}"><i class="fas fa-angle-right"></i></a>
         </div>
     </div>
 {% endblock %}

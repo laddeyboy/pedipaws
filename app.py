@@ -14,6 +14,7 @@ import os
 import tornado.ioloop
 import tornado.web
 import tornado.log
+import math
 
 import queries
 
@@ -87,12 +88,22 @@ class ReviewsHandler(TemplateHandler):
         self.redirect('/reviews?page=0')
     
     def get(self, page):
-        page = self.get_argument('page')
-        print(page)
-        if page:
-            offset = int(page) * 5
+        page = int(self.get_argument('page'))
+        offset = page * 5
+        review_count = self.session.query('''
+        SELECT COUNT(*) AS count FROM reviews
+        ''')[0]['count']
+
+        if math.ceil((review_count - 5) / 5) > page:
+            nextpage = page + 1
         else:
-            offset = 0
+            nextpage = page
+            
+        if page > 0:
+            lastpage = page - 1
+        else:
+            lastpage = 0
+            
         reviews = self.session.query('''
         SELECT *
         FROM reviews
@@ -107,7 +118,7 @@ class ReviewsHandler(TemplateHandler):
         page = str(int(page) + 1)
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
-        self.render_template('reviews.html', {'reviews': graphic_reviews, 'page': page})
+        self.render_template('reviews.html', {'reviews': graphic_reviews, 'page': page, 'nextpage': str(nextpage), 'lastpage': str(lastpage)})
 
 class AppointmentsHandler(TemplateHandler):
     def get(self, page):
