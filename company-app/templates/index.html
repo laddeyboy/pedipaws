@@ -1,6 +1,26 @@
 {% extends "base.html" %} {% block css %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/static/css/index.css"> {% endblock %} {% block content %}
+<link rel="stylesheet" href="/static/css/index.css"> 
+<style>
+    .reviews {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: #F18B86;
+    width: 275px;
+    margin: auto;
+    margin-bottom: 15px;
+    width: 75%;
+    text-align: center;
+    flex: 0 1 auto;
+    justify-content: center;
+}
+.name {
+  margin: 0 10px 10px 0;
+  text-align: right;
+}
+</style>{% endblock %} {% block content %}
 
 <body>
 
@@ -43,6 +63,9 @@
         <p>At PediPaws, discover professional grooming services performed by experienced groomers who love animals! We are passionate
             about positive training methods with rewards, never harsh words or punishment. With a certified groomer on staff,
             we do everything to provide your pet with a fantastic spa day.</p>
-    </div>
+    </div><br><br><hr><br><br>
+    <div class="reviews">&#9733 &#9733 &#9733 &#9733 &#9733<p>"My dog looks so suave, I think *I* need a makeover!"</p><p class="name">-Jason</p>
+</div><div class="reviews">&#9733 &#9733 &#9733 &#9733 &#9734<p>"My cat is a jerk, but now he is a good-looking jerk!"</p>
+    <p class="name">-Kelvin</p></div><br><br>
     {% endblock %} {% block script %}
     <script src="/static/js/index.js" type="text/javascript"></script>{% endblock %}
