@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"> {% block title %}{% endblock %}
+    <meta charset="UTF-8"> 
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/base.css">
     <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
@@ -28,12 +29,11 @@
                         <i class="fas fa-paw"></i>
                     </a>
                 </li>
-
                 <li>
                     <a href="about">About</a>
                 </li>
                 <li>
-                    <a href="reviews">Reviews</a>
+                    <a href="reviews?page=0">Reviews</a>
                 </li>
                 <li>
                     <a href="services">Services</a>
@@ -54,13 +54,13 @@
                 <p>
                     3302 Canal Street
                     <br> Houston TX 77003
-                    <br> contactus@pedipaws.com
+                    <br> contact@pedipaws.com
                     <br> 555.123.4567
                 </p>
                 <div id="social-media-container">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-instagram"></i>
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div id="map"></div>

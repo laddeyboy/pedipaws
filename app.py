@@ -14,6 +14,7 @@ import os
 import tornado.ioloop
 import tornado.web
 import tornado.log
+import math
 
 import queries
 
@@ -72,36 +73,52 @@ class AboutHandler(TemplateHandler):
 
 
 class ReviewsHandler(TemplateHandler):
-    def post(self):
+    def post(self, page):
         name = self.get_body_argument('name')
         stars = self.get_body_argument('rating')
         text = self.get_body_argument('review')
+        page = self.get_argument('page')
         self.session.query('''
         INSERT INTO reviews VALUES(
         DEFAULT,
         %(name)s,
         %(stars)s,
         %(text)s)
-        ''', {
-            'name': name,
-            'stars': stars,
-            'text': text
-        })
-        self.redirect('/reviews')
+        ''', {'name': name, 'stars': stars, 'text': text})
+        self.redirect('/reviews?page=0')
+    
+    def get(self, page):
+        page = int(self.get_argument('page'))
+        offset = page * 5
+        review_count = self.session.query('''
+        SELECT COUNT(*) AS count FROM reviews
+        ''')[0]['count']
 
-    def get(self):
+        if math.ceil((review_count - 5) / 5) > page:
+            nextpage = page + 1
+        else:
+            nextpage = page
+            
+        if page > 0:
+            lastpage = page - 1
+        else:
+            lastpage = 0
+            
         reviews = self.session.query('''
         SELECT *
         FROM reviews
         ORDER BY id DESC
-        ''')
+        LIMIT 5 
+        OFFSET %(offset)s
+        ''', {'offset': offset})
         graphic_reviews = []
         for review in reviews:
             review['stars'] *= "\u2605"
             graphic_reviews.append(review)
+        page = str(int(page) + 1)
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
-        self.render_template('reviews.html', {'reviews': graphic_reviews})
+        self.render_template('reviews.html', {'reviews': graphic_reviews, 'page': page, 'nextpage': str(nextpage), 'lastpage': str(lastpage)})
 
 
 class AppointmentsHandler(TemplateHandler):
@@ -132,8 +149,13 @@ def make_app():
             (r"/", MainHandler),
             (r"/services", ServicesHandler),
             (r"/about", AboutHandler),
+<<<<<<< HEAD
+            (r"/appointments", AppointmentsHandler),
+            (r"/reviews(.*)", ReviewsHandler),
+=======
             (r"/appointment", AppointmentsHandler),
             (r"/reviews", ReviewsHandler),
+>>>>>>> master
             (r"/static/(.*)", tornado.web.StaticFileHandler, {
                 'path': 'static'
             }),
