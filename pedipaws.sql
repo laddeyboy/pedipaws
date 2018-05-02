@@ -250,6 +250,7 @@ COPY public.reviews (id, name, stars, text) FROM stdin;
 2	Joey	5	My dog looks so suave, I think *I* need a makeover!
 3	Jason	4	Loved it. Will recommend to all my friends!
 4	Kelvin	5	My cat is a jerk, but now he is a good-looking jerk!
+5	Paul	4	Mittens gets more Tinder dates than I do!
 \.
 
 
@@ -257,7 +258,7 @@ COPY public.reviews (id, name, stars, text) FROM stdin;
 -- Name: reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.reviews_id_seq', 4, true);
+SELECT pg_catalog.setval('public.reviews_id_seq', 5, true);
 
 
 --
@@ -265,16 +266,16 @@ SELECT pg_catalog.setval('public.reviews_id_seq', 4, true);
 --
 
 COPY public.services (id, service, description, price, groomer, duration, svc_type_img) FROM stdin;
-1	Black Tie Special	Styling, Blowout and Formal Attire. Outfit is yours to keep!	200	Aaron	60	\N
-3	Sunday Best	Haircut, Styling, and Blowout	75	Aaron	45	\N
-4	Nail Trim - Cat/Small Dog	A Pedi for your Paws! Trim all nails	20	Aaron	15	\N
-5	Nail Trim - Dog	A Pedi for your Paws! Trim all nails	25	Aaron	20	\N
-6	Haircut	Basic Trim	30	Aaron	30	\N
-7	Summer Cut	Hot Summers mean cool coats. Full shave with optional shaping	45	Aaron	45	\N
-8	Wash	Gentle shampoo and blowdry	35	Aaron	20	\N
-9	Color treatment - Cat/Small Dog	Ethical dyes available to color pet coat	60	Aaron	45	\N
-10	Color treatment - Dog	Ethical dyes available to color pet coat	75	Aaron	60	\N
-2	Casual Friday	Haircut, Nail trim, and free sunglasses	50	Aaron	30	U+2704
+1	Black Tie Special	Styling, Blowout and Formal Attire. Outfit is yours to keep!	200	Aaron	60	/static/img/blacktie.jpg
+2	Casual Friday	Haircut, Nail trim, and free sunglasses	50	Aaron	30	/static/img/casual.jpg
+3	Sunday Best	Haircut, Styling, and Blowout	75	Aaron	45	/static/img/sunday.jpg
+4	Nail Trim - Cat/Small Dog	A Pedi for your Paws! Trim all nails	20	Aaron	15	/static/img/catnail.jpg
+5	Nail Trim - Dog	A Pedi for your Paws! Trim all nails	25	Aaron	20	/static/img/dognail.jpg
+6	Haircut	Basic Trim	30	Aaron	30	/static/img/haircut.jpg
+7	Summer Cut	Hot Summers mean cool coats. Full shave with optional shaping	45	Aaron	45	/static/img/summer.jpg
+8	Wash	Gentle shampoo and blowdry	35	Aaron	20	/static/img/wash.jpg
+9	Color treatment - Cat/Small Dog	Ethical dyes available to color pet coat	60	Aaron	45	/static/img/catcolor.jpg
+10	Color treatment - Dog	Ethical dyes available to color pet coat	75	Aaron	60	/static/img/dogcolor.jpg
 \.
 
 
