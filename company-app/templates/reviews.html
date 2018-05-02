@@ -10,7 +10,7 @@
 
 {% block content %}
     <h2>REVIEWS</h2>
-    <form id="review-form" action="/reviews" method="POST">
+    <form id="review-form" action="/reviews?page={{ page }}" method="POST">
         <label class="form-label">NAME</label>
         <input id="name" type="text" name="name" placeholder="Jane Doe" required>
         <label class="form-label">RATING</label>
@@ -50,6 +50,10 @@
             <p>{{ review.text }}</p>
         </div>
         {% endfor %}
+        <div id="page-buttons-container">
+            <i class="fas fa-angle-left"></i>
+            <i class="fas fa-angle-right"></i>
+        </div>
     </div>
 {% endblock %}
 

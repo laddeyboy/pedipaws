@@ -29,13 +29,21 @@ a {
   transition: all 0.5s;
 }
 
+a:hover {
+  color: #F18B86
+}
+
+p {
+  line-height: 1.5em;
+}
+
 .blurb {
   text-align: center;
 }
+
 #schedule-appointment {
   background-color: #F18B86;
   border-radius: 5px;
-  margin-right: 50px;
   padding: 10px;
 }
 
@@ -51,6 +59,10 @@ footer {
   color: white;
   font-weight: 200;
   letter-spacing: .05em;
+}
+
+footer a {
+  display: inline;
 }
 
 #contact-info,
@@ -161,6 +173,7 @@ footer {
   .flex-nav ul.open {
     display: flex;
     flex-direction: column;
+    margin-top: 40px;
   }
 
   .logo {

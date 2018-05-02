@@ -76,17 +76,15 @@ input[type="radio"] ~ label {
   display: inline-block;
 }
 
-input[type="radio"] ~ label:hover {
-  color: red;
-}
-
 input[type="radio"]:checked ~ label{
   color: gold;
 }
 
+input[type="radio"]:checked ~ label,
+input[type="radio"] ~ label:hover,
 input[type="radio"]:hover ~ label,
-input[type="radio"]:checked:hover ~label {
-  color: red;
+input[type="radio"]:checked:hover ~ label {
+  color: #F18B86;
 }
 
 .review {

@@ -72,10 +72,11 @@ class AboutHandler(TemplateHandler):
 
 
 class ReviewsHandler(TemplateHandler):
-    def post(self):
+    def post(self, page):
         name = self.get_body_argument('name')
         stars = self.get_body_argument('rating')
         text = self.get_body_argument('review')
+        page = self.get_argument('page')
         self.session.query('''
         INSERT INTO reviews VALUES(
         DEFAULT,
@@ -83,21 +84,30 @@ class ReviewsHandler(TemplateHandler):
         %(stars)s,
         %(text)s)
         ''', {'name': name, 'stars': stars, 'text': text})
-        self.redirect('/reviews')
+        self.redirect('/reviews?page=0')
     
-    def get(self):
+    def get(self, page):
+        page = self.get_argument('page')
+        print(page)
+        if page:
+            offset = int(page) * 5
+        else:
+            offset = 0
         reviews = self.session.query('''
         SELECT *
         FROM reviews
         ORDER BY id DESC
-        ''')
+        LIMIT 5 
+        OFFSET %(offset)s
+        ''', {'offset': offset})
         graphic_reviews = []
         for review in reviews:
             review['stars'] *= "\u2605"
             graphic_reviews.append(review)
+        page = str(int(page) + 1)
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
-        self.render_template('reviews.html', {'reviews': graphic_reviews})
+        self.render_template('reviews.html', {'reviews': graphic_reviews, 'page': page})
 
 class AppointmentsHandler(TemplateHandler):
     def get(self, page):
@@ -128,7 +138,7 @@ def make_app():
             (r"/services", ServicesHandler),
             (r"/about", AboutHandler),
             (r"/appointments", AppointmentsHandler),
-            (r"/reviews", ReviewsHandler),
+            (r"/reviews(.*)", ReviewsHandler),
             (r"/static/(.*)", tornado.web.StaticFileHandler, {
                 'path': 'static'
             }),
