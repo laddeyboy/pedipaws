@@ -84,9 +84,13 @@ class ReviewsHandler(TemplateHandler):
         %(name)s,
         %(stars)s,
         %(text)s)
-        ''', {'name': name, 'stars': stars, 'text': text})
+        ''', {
+            'name': name,
+            'stars': stars,
+            'text': text
+        })
         self.redirect('/reviews?page=0')
-    
+
     def get(self, page):
         page = int(self.get_argument('page'))
         offset = page * 5
@@ -98,12 +102,12 @@ class ReviewsHandler(TemplateHandler):
             nextpage = page + 1
         else:
             nextpage = page
-            
+
         if page > 0:
             lastpage = page - 1
         else:
             lastpage = 0
-            
+
         reviews = self.session.query('''
         SELECT *
         FROM reviews
@@ -118,7 +122,13 @@ class ReviewsHandler(TemplateHandler):
         page = str(int(page) + 1)
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
-        self.render_template('reviews.html', {'reviews': graphic_reviews, 'page': page, 'nextpage': str(nextpage), 'lastpage': str(lastpage)})
+        self.render_template(
+            'reviews.html', {
+                'reviews': graphic_reviews,
+                'page': page,
+                'nextpage': str(nextpage),
+                'lastpage': str(lastpage)
+            })
 
 
 class AppointmentsHandler(TemplateHandler):
