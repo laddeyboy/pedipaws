@@ -34,7 +34,7 @@ ENV = Environment(
 
 class TemplateHandler(tornado.web.RequestHandler):
     def initialize(self):
-        self.session = queries.Session( os.environ.get('DATABASE_URL', 'postgresql://postgres@localhost:5432/pedipaws'))
+        self.session = queries.Session(os.environ.get('DATABASE_URL', 'postgresql://postgres@localhost:5432/pedipaws'))
 
     def render_template(self, tpl, context):
         template = ENV.get_template(tpl)
