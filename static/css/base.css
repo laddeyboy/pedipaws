@@ -18,7 +18,46 @@ h1,
 h2 {
   font-family: "Montserrat", sans-serif;
 }
+input[type=text], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.modal {
+  background-color: #efe3da;
+}
+#submit {
+  color: #6A8D73;
+}
 
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
 a {
   color: white;
   font-weight: 100;
@@ -30,7 +69,7 @@ a {
   transition: all 0.5s;
 }
 
-a:hover {
+a:hover, #submit:hover {
   color: #F18B86
 }
 

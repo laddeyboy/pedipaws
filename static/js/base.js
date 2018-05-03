@@ -17,3 +17,7 @@ function initMap() {
 }
 
 initMap();
+
+ $("#fade").modal({
+  fadeDuration: 100
+});
