@@ -54,7 +54,7 @@
         <footer>
             <div id="contact-info">
                 <div id="ex1" class="modal">
-  <form id="contact-form" action="" method="POST">
+  <form id="contact-form" action="/form" method="POST">
     Name:
     <br>
     <input id="fname" type="text" name="name" placeholder="Name">
@@ -62,10 +62,10 @@
     <br>
     <input id="email" type="text" name="email" placeholder="your@email.com">
     <br>
-    Comments:<br><textarea></textarea>
-</form>
-  <a id="submit" href="#" rel="modal:close">Contact Us</a>
-</div>
+    Comments:<br><input id="comments" type='text' name="textarea">
+
+  <button type="submit" id="submit" href="#" rel="modal:close">Submit comment</button>
+</form></div>
 
 <!-- Link to open modal -->
 <h5><a href="#ex1" rel="modal:open">Contact Us</a></h5>

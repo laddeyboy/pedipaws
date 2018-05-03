@@ -123,8 +123,8 @@ footer a {
 }
 
 #contact-info, h5 {
-  margin: 0;
   font-size: 20px;
+  text-align: center;
 }
 
 #social-media-container {
@@ -134,6 +134,9 @@ footer a {
 
 #map {
   width: 60%;
+}
+#comment {
+  width: 100%;
 }
 
 .header {

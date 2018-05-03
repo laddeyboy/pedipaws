@@ -36,21 +36,47 @@ ENV = Environment(
     loader=PackageLoader('company-app', 'templates'),
     autoescape=select_autoescape(['html', 'xml']))
 
-
+def send_email (email, comments):
+    response = client.send_email(
+    Destination={
+      'ToAddresses': ['jessica.polansky@gmail.com'],
+    },
+    Message={
+      'Body': {
+        'Text': {
+          'Charset': 'UTF-8',
+          'Data': '{} wants to talk to you\n\n{}'.format(email, comments),
+        },
+      },
+      'Subject': {'Charset': 'UTF-8', 'Data': 'Test email'},
+    },
+    Source='mailer@jessicapolansky.com',
+  )
 class TemplateHandler(tornado.web.RequestHandler):
     def initialize(self):
         self.session = queries.Session(
             #CHANGE DATABASE NAME TO SERVICES ON PUSH/PRODUCTION
             'postgresql://postgres@localhost:5432/Services')
-
+            
+    def post(self):
+        email = self.get_body_argument('email', None)
+        print('email: ', email)
+        comments = self.get_body_argument('comments', None)
+        print('comments: ', comments)
+        error = ''
+        if email:
+          print('EMAIL:', email)
+          send_email(email, comments)
+          self.redirect('index.html')
+        else:
+          error = 'GIVE ME YOUR EMAIL!'
+    
     def render_template(self, tpl, context):
         template = ENV.get_template(tpl)
         self.write(template.render(**context))
-        
-    def post (self):
-    name = self.get_body_argument('name')
 
 
+  
 class MainHandler(TemplateHandler):
     def get(self):
         self.set_header('Cache-Control',
