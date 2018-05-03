@@ -15,13 +15,8 @@ import tornado.ioloop
 import tornado.web
 import tornado.log
 import math
-
 import queries
-
 import markdown2
-
-import psycopg2
-
 import boto3
 
 from jinja2 import Environment, PackageLoader, select_autoescape
@@ -54,6 +49,8 @@ def send_email (email, comments):
   )
 class TemplateHandler(tornado.web.RequestHandler):
     def initialize(self):
+        # self.session = queries.Session(os.environ.get('DATABASE_URL', 'postgresql://postgres@localhost:5432/pedipaws'))
+
         self.session = queries.Session(
             #CHANGE DATABASE NAME TO SERVICES ON PUSH/PRODUCTION
             'postgresql://postgres@localhost:5432/Services')
