@@ -122,7 +122,7 @@ footer a {
   line-height: 2em;
 }
 
-#contact-info h5 {
+#contact-info, h5 {
   margin: 0;
   font-size: 20px;
 }

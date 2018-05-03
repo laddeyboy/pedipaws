@@ -41,11 +41,14 @@ class TemplateHandler(tornado.web.RequestHandler):
     def initialize(self):
         self.session = queries.Session(
             #CHANGE DATABASE NAME TO SERVICES ON PUSH/PRODUCTION
-            'postgresql://postgres@localhost:5432/pedipaws')
+            'postgresql://postgres@localhost:5432/Services')
 
     def render_template(self, tpl, context):
         template = ENV.get_template(tpl)
         self.write(template.render(**context))
+        
+    def post (self):
+    name = self.get_body_argument('name')
 
 
 class MainHandler(TemplateHandler):
