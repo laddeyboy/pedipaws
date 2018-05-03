@@ -1,7 +1,7 @@
 # PEDIPAWS
 **Our mock business website is dedicated to providing your fur-baby with the pampering he/she deserves**
 
-### **_Packages required for this app:_ **
+**_Packages required for this app:_ **
   * tornado
   * boto3
   * os
