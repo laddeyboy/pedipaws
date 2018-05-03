@@ -20,7 +20,7 @@ import queries
 
 import markdown2
 
-import psycopg2
+# import psycopg2
 
 import boto3
 
