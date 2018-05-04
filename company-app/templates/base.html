@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8"> 
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/base.css">
     <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
@@ -12,6 +13,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Open+Sans:300,400" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
     {% block css %}{% endblock %}
 
 </head>
@@ -50,7 +53,22 @@
     <div>
         <footer>
             <div id="contact-info">
-                <h5>Contact Us</h5>
+                <div id="ex1" class="modal">
+  <form id="contact-form" action="/success" method="POST">
+    Name:
+    <br>
+    <input id="fname" type="text" name="name" placeholder="Name" required>
+    <br> Email:
+    <br>
+    <input id="email" type="text" name="email" placeholder="your@email.com" required>
+    <br>
+    Comments:<br><input id="contactcomments" type='text' name="textarea" required>
+
+  <button type="submit" id="contactsubmit" href="#" rel="modal:close">Submit comment</button>
+</form></div>
+
+<!-- Link to open modal -->
+<h5><a href="#ex1" rel="modal:open">Contact Us</a></h5>
                 <p>
                     3302 Canal Street
                     <br> Houston TX 77003

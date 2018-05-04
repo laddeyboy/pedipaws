@@ -17,3 +17,7 @@ function initMap() {
 }
 
 initMap();
+// Contact modal
+ $("#fade").modal({
+  fadeDuration: 100
+});
