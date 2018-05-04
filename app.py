@@ -17,10 +17,11 @@ import tornado.log
 import math
 import queries
 import markdown2
-
 import boto3
+import datetime
 
 from jinja2 import Environment, PackageLoader, select_autoescape
+from datetime import datetime, timedelta
 
 client = boto3.client(
     'ses',
@@ -132,19 +133,60 @@ class AppointmentsHandler(TemplateHandler):
                         'no-store, no-cache, must-revalidate, max-age=0')
         self.render_template("appointment.html", {})
 
-    # def post(self):
-    #   email = self.get_body_argument('email', None)
-    #   comments = self.get_body_argument('comments', None)
-    #   error = ''
-    #   if email:
-    #     print('EMAIL:', email)
-    #     send_email(email, comments)
-    #     self.redirect('/form-success')
+    def post(self):
+        fname = self.get_body_argument('fname', None)
+        lname = self.get_body_argument('lname', None)
+        petname = self.get_body_argument('petname', None)
+        email = self.get_body_argument('email', None)
+        phone = self.get_body_argument('phone', None)
+        service = self.get_body_argument('service', None)
+        date = self.get_body_argument('date', None)
+        time = self.get_body_argument('time', None)
+        comment = self.get_body_argument('comments', None)
+        error = ''
+        
+        service_length = self.session.query('''
+        SELECT duration FROM services WHERE service = %(service)s
+        ''', {'service': service})
+        
+        fullname = fname + lname
+        
+        time = strptime(time, '%I:%M%p')
+        endtime = time + timedelta(minutes=service_length)
+        
+        self.session.query('''
+        INSERT INTO appointment VALUES(
+        DEFAULT,
+        %(fullname)s,
+        %(petname)s,
+        %(service)s,
+        %(date)s,
+        %(time)s,
+        %(endtime)s,
+        %(email)s,
+        %(phone)s,
+        1,
+        %(comment)s)
+        ''', {
+            'fullname': fullname,
+            'petname': petname,
+            'service': service,
+            'date': date,
+            'time': time,
+            'endtime': endtime,
+            'email': email,
+            'phone': phone,
+            'comment': comment
+        })
+        # if email:
+        #     print('EMAIL:', email)
+        # send_email(email, comments)
+        # self.redirect('/form-success')
 
-    # self.set_header(
-    #   'Cache-Control',
-    #   'no-store, no-cache, must-revalidate, max-age=0')
-    # self.render_template("form.html", {'error': error})
+        self.set_header(
+          'Cache-Control',
+          'no-store, no-cache, must-revalidate, max-age=0')
+        self.render_template("form.html", {'error': error})
 
 
 def make_app():
