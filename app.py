@@ -45,7 +45,7 @@ def send_email (email, comments):
       },
       'Subject': {'Charset': 'UTF-8', 'Data': 'Test email'},
     },
-    Source='mailer@jessicapolansky.com',
+    Source='jessica.polansky@gmail.com',
   )
 class TemplateHandler(tornado.web.RequestHandler):
     def initialize(self):
@@ -55,7 +55,7 @@ class TemplateHandler(tornado.web.RequestHandler):
             #CHANGE DATABASE NAME TO SERVICES ON PUSH/PRODUCTION
             'postgresql://postgres@localhost:5432/Services')
             
-    def post(self):
+    def post(self, context):
         email = self.get_body_argument('email', None)
         print('email: ', email)
         comments = self.get_body_argument('comments', None)
@@ -64,7 +64,7 @@ class TemplateHandler(tornado.web.RequestHandler):
         if email:
           print('EMAIL:', email)
           send_email(email, comments)
-          self.redirect('index.html')
+          self.redirect('success.html', {})
         else:
           error = 'GIVE ME YOUR EMAIL!'
     
@@ -81,7 +81,13 @@ class MainHandler(TemplateHandler):
         context = {}
         self.render_template("index.html", context)
 
-
+class SuccessHandler(TemplateHandler):
+    def get(self, context):
+        self.set_header('Cache-Control',
+                        'no-store, no-cache, must-revalidate, max-age=0')
+        context = {}
+        self.render_template("success.html", context)
+        
 class ServicesHandler(TemplateHandler):
     def get(self):
         ppservices = self.session.query('SELECT * FROM services')
@@ -187,6 +193,7 @@ def make_app():
             (r"/about", AboutHandler),
             (r"/appointment", AppointmentsHandler),
             (r"/reviews(.*)", ReviewsHandler),
+            (r"/success(.*)", SuccessHandler),
             (r"/static/(.*)", tornado.web.StaticFileHandler, {
                 'path': 'static'
             }),

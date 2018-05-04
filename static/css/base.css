@@ -18,16 +18,8 @@ h1,
 h2 {
   font-family: "Montserrat", sans-serif;
 }
-input[type=text], select {
-    width: 50%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-textarea {
+
+#contactcomments {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -36,28 +28,24 @@ textarea {
   border-radius: 4px;
   box-sizing: border-box;
 }
+.button:hover {
+  color: #F18B86 ;
+}
 .modal {
   background-color: #efe3da;
 }
-#submit {
+#contactsubmit {
   color: #6A8D73;
+  font-size: 16px;
+  width: 100%;
+  background-color: #efe3da;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-
-input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
 a {
   color: white;
   font-weight: 100;
@@ -69,8 +57,8 @@ a {
   transition: all 0.5s;
 }
 
-a:hover, #submit:hover {
-  color: #F18B86
+a:hover {
+  color: #F18B86;
 }
 
 p {
@@ -135,9 +123,7 @@ footer a {
 #map {
   width: 60%;
 }
-#comment {
-  width: 100%;
-}
+
 
 .header {
   display: none;

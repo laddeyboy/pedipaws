@@ -1,0 +1,17 @@
+#return {
+  color: #6A8D73;
+  font-weight: 100;
+  letter-spacing: 2px;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  transition: all 0.5s;
+  margin-bottom: 20px;
+}
+a:hover, #return:hover {
+  color: #F18B86;
+}
+#thanks {
+    text-align: center;
+}
