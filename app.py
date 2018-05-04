@@ -139,17 +139,18 @@ class AppointmentsHandler(TemplateHandler):
         petname = self.get_body_argument('petname', None)
         email = self.get_body_argument('email', None)
         phone = self.get_body_argument('phone', None)
-        service = self.get_body_argument('service', None)
+        service = self.get_argument('service', None)
         date = self.get_body_argument('date', None)
-        time = self.get_body_argument('time', None)
+        time = self.get_argument('time', None)
         comment = self.get_body_argument('comments', None)
         error = ''
+        print(service)
         
         service_length = self.session.query('''
         SELECT duration FROM services WHERE service = %(service)s
-        ''', {'service': service})
+        ''', {'service': service})[0]['duration']
         
-        fullname = fname + lname
+        fullname = fname + ' ' + lname
         
         time = datetime.strptime(time, '%I:%M%p')
         endtime = time + timedelta(minutes=service_length)
@@ -186,7 +187,7 @@ class AppointmentsHandler(TemplateHandler):
         self.set_header(
           'Cache-Control',
           'no-store, no-cache, must-revalidate, max-age=0')
-        self.render_template("form.html", {'error': error})
+        self.render_template("index.html", {'error': error})
 
 
 def make_app():
