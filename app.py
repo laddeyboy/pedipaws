@@ -55,7 +55,7 @@ class TemplateHandler(tornado.web.RequestHandler):
 
         self.session = queries.Session(
             #CHANGE DATABASE NAME TO SERVICES ON PUSH/PRODUCTION
-            'postgresql://postgres@localhost:5432/Services')
+            'postgresql://postgres@localhost:5432/pedipaws')
             
     def post(self, context):
         email = self.get_body_argument('email', None)
