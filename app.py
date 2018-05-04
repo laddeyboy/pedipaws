@@ -62,8 +62,7 @@ class TemplateHandler(tornado.web.RequestHandler):
   
 class MainHandler(TemplateHandler):
     def get(self):
-        self.set_header('Cache-Control',
-                        'no-store, no-cache, must-revalidate, max-age=0')
+        self.set_header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
         context = {}
         self.render_template("index.html", context)
 
