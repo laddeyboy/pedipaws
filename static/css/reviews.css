@@ -106,4 +106,9 @@ input[type="radio"]:checked:hover ~ label {
   display: flex;
   justify-content: space-between;
   margin: auto;
+  margin-bottom: .5em;
+}
+
+.pagebutton {
+  text-shadow: -5px 5px 5px #efe4da;
 }
