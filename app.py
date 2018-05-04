@@ -1,15 +1,3 @@
-# class BlogPostHandler(TemplateHandler):
-#     def get(self, slug):
-#         posts = self.session.query( 'SELECT * FROM post WHERE slug = %(slug)s', {'slug': slug})
-#         self.render_template("post.html", {'post': posts[0]})
-
-#     def post (self, slug):
-#         comment = self.get_body_argument('comment')
-#         print(comment)
-#         posts = self.session.query( 'SELECT * FROM post WHERE slug = %(slug)s', {'slug': slug} )
-#         # Save Comment Here
-#         self.redirect('/post/' + slug, {'comment': comment})
-
 import os
 import tornado.ioloop
 import tornado.web
@@ -51,11 +39,7 @@ def send_email (email, comments):
   )
 class TemplateHandler(tornado.web.RequestHandler):
     def initialize(self):
-        # self.session = queries.Session(os.environ.get('DATABASE_URL', 'postgresql://postgres@localhost:5432/pedipaws'))
-
-        self.session = queries.Session(
-            #CHANGE DATABASE NAME TO SERVICES ON PUSH/PRODUCTION
-            'postgresql://postgres@localhost:5432/pedipaws')
+        self.session = queries.Session(os.environ.get('DATABASE_URL', 'postgresql://postgres@localhost:5432/pedipaws'))
             
     def post(self, context):
         email = self.get_body_argument('email', None)
@@ -93,8 +77,6 @@ class SuccessHandler(TemplateHandler):
 class ServicesHandler(TemplateHandler):
     def get(self):
         ppservices = self.session.query('SELECT * FROM services')
-        # for service in ppservices:
-        #     print(service)
         self.render_template('services.html', {'ppservices': ppservices})
 
 
@@ -252,10 +234,3 @@ if __name__ == "__main__":
     PORT = int(os.environ.get('PORT', '8000'))
     app.listen(PORT)
     tornado.ioloop.IOLoop.current().start()
-
-# conn = psycopg2.connect("dbname=blog user=postgres")
-# cur = conn.cursor()
-# cur.execute("SELECT * FROM blog;")
-# cur.fetchone()
-# cur.close()
-# conn.close()
