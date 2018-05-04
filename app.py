@@ -151,7 +151,7 @@ class AppointmentsHandler(TemplateHandler):
         
         fullname = fname + lname
         
-        time = strptime(time, '%I:%M%p')
+        time = datetime.strptime(time, '%I:%M%p')
         endtime = time + timedelta(minutes=service_length)
         
         self.session.query('''
