@@ -29,14 +29,14 @@ To view our company website please click here: <a href="https://pedipaws.herokua
 
 ### **_Issues that we encountered_**
 
-* _"Heroku is a M_FER" - Josh_
+* _"Heroku is a M_FER" - Josh_ 🖕 
 
 ### **_Authors_**
 ```
 * Katy Gibson
 * Jessica Robinson
 * Aaron Wilkinson
-* Josh Ladwig :fu:  
+* Josh Ladwig
 * Jared Stevens
 ```
 
