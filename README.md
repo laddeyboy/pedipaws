@@ -27,9 +27,12 @@ To view our company website please click here: <a href="https://pedipaws.herokua
 * import boto3
 ```
 
-### **_Issues that we encountered_**
-
-* _"Heroku is a M_FER" - Josh_ 🖕 
+### **_Issues Encountered_**
+```
+* Heroku
+    
+*
+```
 
 ### **_Authors_**
 ```
