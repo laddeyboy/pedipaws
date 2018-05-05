@@ -43,6 +43,32 @@ We wrote a database using Postgres with 4 tables for services, appointments, gro
 * CSS - Getting the CSS to work the way we needed and wanted it to work.
 * GitHub - Being the first time to use the advanced features of GitHub and working 
   as a group caused a few dilemmmas getting everything to push, pull, and merge properly.
+* Databases: 
+  1) Figuring out the right data types to use for each column.
+  2) Sharing a local database to github. 
+* Contact Us modal window: 
+  1) Figuring out what python needs to successfully fill out and submit a form. 
+  2) Making it work on 'any page' (since it's in the footer) 
+  3) Getting it to send me an email!
+```
+
+### **_Example Code_**
+
+```
+client = boto3.client(
+    'ses',
+    region_name='us-east-1',
+    aws_access_key_id=os.environ.get('AWS_ACCESS_KEY'),
+    aws_secret_access_key=os.environ.get('AWS_SECRET_KEY'))
+
+ENV = Environment(
+    loader=PackageLoader('company-app', 'templates'),
+    autoescape=select_autoescape(['html', 'xml']))
+
+def send_email (email, comments):
+    response = client.send_email(
+    Destination={
+      'ToAddresses': ['example@gmail.com'],
 ```
 
 ### **_Authors_**
